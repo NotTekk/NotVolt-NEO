@@ -1,0 +1,30 @@
+CREATE TABLE IF NOT EXISTS users (
+	id BIGSERIAL PRIMARY KEY,
+	discord_id VARCHAR(32) NOT NULL UNIQUE,
+	display_name VARCHAR(128),
+	created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS guilds (
+	id BIGSERIAL PRIMARY KEY,
+	guild_id VARCHAR(32) NOT NULL UNIQUE,
+	name VARCHAR(255),
+	created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS guild_configs (
+	id BIGSERIAL PRIMARY KEY,
+	guild_id VARCHAR(32) NOT NULL,
+	key VARCHAR(128) NOT NULL,
+	value TEXT,
+	UNIQUE (guild_id, key)
+);
+
+CREATE TABLE IF NOT EXISTS moderation_cases (
+	id BIGSERIAL PRIMARY KEY,
+	guild_id VARCHAR(32) NOT NULL,
+	user_discord_id VARCHAR(32) NOT NULL,
+	action VARCHAR(32) NOT NULL,
+	reason TEXT,
+	created_at TIMESTAMPTZ DEFAULT NOW()
+);

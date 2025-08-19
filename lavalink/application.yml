@@ -1,0 +1,25 @@
+server:
+  port: ${SERVER_PORT:2333}
+
+lavalink:
+  server:
+    password: ${LAVALINK_PASSWORD:youshallnotpass}
+    sources:
+      youtube: false
+      bandcamp: true
+      soundcloud: true
+      http: true
+      twitch: true
+      vimeo: true
+      ytsearch: false
+    filters: true
+    bufferDurationMs: 400
+    frameBufferDurationMs: 5000
+    opusEncodingQuality: 10
+    resamplingQuality: LOW
+    trackStuckThresholdMs: 10000
+    useSeekGhosting: true
+    youtubePlaylistLoadLimit: 6
+    playerUpdateInterval: 5
+    youtubeSearchEnabled: false
+    gc-warnings: true
